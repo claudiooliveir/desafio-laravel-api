@@ -20,5 +20,15 @@ class UserRepository
     {
         return $this->entidade->get();
     }
+    public function update ()
+    {
+        return  $this->entidade->update();
+    }
+
+      public function delete ()
+    {
+        return  $this->entidade->delete();
+    }
+
 }
 

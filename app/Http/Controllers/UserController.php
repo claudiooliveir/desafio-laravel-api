@@ -2,14 +2,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\UserServices\UserService;
+use App\Services\UserService;
 
 class UserController
 {
     private $entidade;
-    public function __construct(UserService $model)
+    public function __construct(UserService $service)
     {
-        $this->entidade = $model;
+        $this->entidade = $service;
     }
     public function create(array $data)
     {
@@ -21,6 +21,17 @@ class UserController
     {
         return $this->entidade->index();
     }
+
+    public function update ()
+    {
+        return  $this->entidade->update();
+    }
+
+      public function delete ()
+    {
+        return  $this->entidade->delete();
+    }
+
 }
 
 

@@ -1,5 +1,5 @@
 <?php
-namespace App\UserServices;
+namespace App\Services;
 
 use App\Repositories\UserRepository;
 
@@ -15,4 +15,15 @@ class UserService{
     {
         return $this->entidade->index();
     }
+
+     public function update ()
+    {
+        return  $this->entidade->update();
+    }
+
+    public function delete ()
+    {
+        return  $this->entidade->delete();
+    }
+
 }

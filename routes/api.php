@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+
+Route::get(
+    '/user/profile',
+    [UserController::class, 'index']
+)->name('profile');
+
+
+Route::post(
+    '/user/store',
+    [UserController::class, 'create']
+)->name('store');
+
+Route::put(
+    '/user/update',
+    [UserController::class, 'update']
+)->name('update');
+
+Route::delete(
+    '/user/delete',
+    [UserController::class, 'destroy']
+)->name('delete');
