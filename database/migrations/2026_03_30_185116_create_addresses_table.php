@@ -15,11 +15,13 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('street');
             $table->string('city');
-            $table->string('neighborhood');
+            $table->string('neighborhood'); // Adiciona o campo de bairro
             $table->string('state');
-            $table->foreignId('user_id')->constrained();
+            $table->string('zip_code'); // Adiciona o campo de código postal
+            $table->timestamps();
+
         });
     }
 
