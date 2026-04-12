@@ -1,38 +1,24 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+
+// Listar todos + filtros (GET /api/users?name=&cpf=&from=&to=)
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+// Criar usuário (POST /api/users)
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
+
+// Detalhar usuário (GET /api/users/1)
+Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+
+// Atualizar usuário (PUT /api/users/1)
+Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+
+// Deletar usuário (DELETE /api/users/1)
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+// Route::apiResource('users', UserController::class);
+//com essa linha, o Laravel já cria as rotas para as operações de CRUD (Create, Read, Update, Delete) para o recurso "users", utilizando os métodos correspondentes no UserController. As rotas criadas seriam: //
 
 
-
-Route::get(
-    '/user/profile',
-    [UserController::class, 'index']
-)->name('profile');
-
-
-Route::post(
-    '/user/store',
-    [UserController::class, 'create']
-)->name('store');
-
-Route::put(
-    '/user/update',
-    [UserController::class, 'update']
-)->name('update');
-
-Route::delete(
-    '/user/delete',
-    [UserController::class, 'destroy']
-)->name('delete');
