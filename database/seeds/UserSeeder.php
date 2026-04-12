@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -20,10 +21,11 @@ class UserSeeder extends Seeder
             'password' => '123456',
             'cpf' => '123.456.789',
             'profile_id' => 1,
+            'password' => Hash::make('123456'),
         ],
         ];
 
-    foreach ($user as $key => $value) { 
+    foreach ($user as $key => $value) {
         DB::table('users')->insert($value);
-        
+
 }}};
