@@ -11,6 +11,7 @@ class Address extends Model
     protected $fillable = [ // ← FALTAVA
         'street', 'number', 'neighborhood', 'city', 'state', 'zip_code',
     ];
+     protected $hidden = ['created_at', 'update_at', 'pivot'];
 
     public function users(): BelongsToMany
     {

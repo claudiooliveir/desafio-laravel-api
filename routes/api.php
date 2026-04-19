@@ -18,7 +18,7 @@ Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update
 // Deletar usuário (DELETE /api/users/1)
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
-// Route::apiResource('users', UserController::class);
-//com essa linha, o Laravel já cria as rotas para as operações de CRUD (Create, Read, Update, Delete) para o recurso "users", utilizando os métodos correspondentes no UserController. As rotas criadas seriam: //
+// Route::apiResource('/users', UserController::class);
+//com essa linha, o Laravel já cria as rotas para as operações de CRUD (Create, Read, Update, Delete) para o recurso "users", utilizando os métodos correspondentes no UserController.
 
 

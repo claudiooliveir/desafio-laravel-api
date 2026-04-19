@@ -18,12 +18,14 @@ class User extends Authenticatable
         'email',
         'password',
         'cpf',
-        'profile_id',
-        'birth_date',
+        'profile_id', // Chave estrangeira para o perfil do usuário
+        'birth_date', // Data de nascimento do usuário
+        'weight', // Peso do usuário
     ];
 
     protected $hidden = [
         'password',
+        'email_verified_at', // Esconde a data de verificação do email
         'remember_token',
     ];
 

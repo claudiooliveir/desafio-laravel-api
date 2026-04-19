@@ -9,6 +9,7 @@ use App\Models\User;
 class Profile extends Model // ← era "Profiles" (remover o 's')
 {
     protected $fillable = ['name']; // ← FALTAVA
+    protected $hidden = ['created_at', 'update_at',];
 
     public function users(): HasMany
     {
