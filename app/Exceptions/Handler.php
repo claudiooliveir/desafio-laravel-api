@@ -2,8 +2,11 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +53,31 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+         // Registro não encontrado
+    if ($exception instanceof ModelNotFoundException) {
+        return response()->json([
+            'message' => 'Recurso não encontrado'
+        ], 404);
     }
+
+    // Rota inexistente
+    if ($exception instanceof NotFoundHttpException) {
+        return response()->json([
+            'message' => 'Rota não encontrada'
+        ], 404);
+    }
+
+    // Erro de validação
+    if ($exception instanceof ValidationException) {
+        return response()->json([
+            'message' => 'Erro de validação',
+            'errors' => $exception->errors()
+        ], 422);
+    }
+
+    return parent::render($request, $exception);
 }
+}
+
+
+
